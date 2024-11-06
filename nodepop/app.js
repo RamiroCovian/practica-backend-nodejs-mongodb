@@ -6,6 +6,13 @@ import * as homeController from './controllers/homeController.js'
 
 const app = express()
 
+// Defino en variable nombre de app
+app.locals.appName = "Nodepop"
+
+// Defino donde se encuentran las vistas
+app.set('views', 'views')
+// Defino cual sera el motor de plantillas
+app.set('view engine', 'ejs')
 
 app.use(logger("dev"))
 
