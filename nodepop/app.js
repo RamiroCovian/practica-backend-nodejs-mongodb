@@ -1,8 +1,12 @@
 import express from 'express'
 import createError from 'http-errors'
 import logger from 'morgan'
-
+import connectMongoose from './lib/connectMongoose.js'
 import * as homeController from './controllers/homeController.js'
+
+await connectMongoose()
+console.log('Conectado a MongoDB');
+
 
 const app = express()
 
