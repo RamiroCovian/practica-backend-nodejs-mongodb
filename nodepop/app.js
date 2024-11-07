@@ -5,6 +5,7 @@ import connectMongoose from './lib/connectMongoose.js'
 import * as sessionManager from './lib/sessionManager.js'
 import * as homeController from './controllers/homeController.js'
 import * as loginController from './controllers/loginController.js'
+import * as productsController from './controllers/productsController.js'
 
 await connectMongoose()
 console.log('Conectado a MongoDB');
@@ -31,6 +32,9 @@ app.get('/', homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.postLogin)
 app.all('/logout', loginController.logout)
+
+// Private pages
+app.get('/products/new', sessionManager.guard, productsController.index)
 
 // Error handler
 app.use((req, res, next) => {
