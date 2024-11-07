@@ -9,7 +9,16 @@
 
     <% // Contenido para usuarios logados %>
     <% if (session.userId) { %>
-        <h2>Estamos adentro</h2>
+        <h2>Products for sale</h2>
+        <% products.forEach(product=> { %>
+            <p>
+                <strong>Name:</strong> <%= product.name %><br>
+                <strong>Price:</strong> u$s <%= product.price %><br>
+                <strong>Image:</strong> <%= product.image %><br>
+                <strong>Tags:</strong> 
+                <%= product.tags.join(', ') %>
+            </p>
+            <% }) %>
     <% } %>
 
 
