@@ -30,6 +30,7 @@ app.use(sessionManager.middleware, sessionManager.useSessionInViews)
 app.get('/', homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.postLogin)
+app.all('/logout', loginController.logout)
 
 // Error handler
 app.use((req, res, next) => {
