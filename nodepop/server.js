@@ -10,6 +10,7 @@ const port = process.env.port || 3000
 // Creo el http server
 const server = http.createServer(app)
 
+// Suscripcion a eventos
 server.on('error', err => console.error(err))
 server.on('listening', () => {
     debug(`Servidor arrancado en puerto ${port}`);

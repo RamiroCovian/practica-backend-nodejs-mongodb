@@ -25,8 +25,22 @@ app.use((req, res, next) => {
 
 // Controlo los errores en el browser
 app.use((err, req, res, next) => {
-    console.log(err) // muestro el error por consola
-    res.send('Ocurrio un error: ' + err.message) // manejo el error
+    // Comprobar Validation errors
+    if (err.array) {
+        console.log(err.array())
+        err.message = 'Invalid request: ' + err.array()
+            .map(e => `${e.location} ${e.type} ${e.path} ${e.msg}`)
+            .join(', ')
+        err.status = 422
+    }
+    res.status(err.status || 500)
+
+    // set locals, only providing error in development
+    res.locals.message = err.message
+    res.locals.error = process.env.NODEAPP_ENV === 'development' ? err : {}
+
+    //render error view
+    res.render('error')
 })
 
 export default app
