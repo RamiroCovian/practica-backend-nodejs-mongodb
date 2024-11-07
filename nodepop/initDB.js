@@ -46,9 +46,9 @@ async function initProducts() {
     // Create initial products
     const insertResult = await Product.insertMany([
         { name: 'T-shirt', owner: admin._id, price: 5, image: 'https://raw.githubusercontent.com/RamiroCovian/practica-backend-nodejs-mongodb/main/nodepop/resources/tshirt_girl.jpg', tags: ['Summer', 'Girls'] },
-        { name: 'Short', owner: user1._id, price: 8, image: 'https://raw.githubusercontent.com/RamiroCovian/practica-backend-nodejs-mongodb/main/nodepop/resources/short_football.jpg', tags: ['Nike', 'Boys', 'Football'] },
+        { name: 'Soccer shorts', owner: user1._id, price: 8, image: 'https://raw.githubusercontent.com/RamiroCovian/practica-backend-nodejs-mongodb/main/nodepop/resources/short_football.jpg', tags: ['Nike', 'Boys', 'Football'] },
         { name: 'Shoes', owner: admin._id, price: 50, image: 'https://raw.githubusercontent.com/RamiroCovian/practica-backend-nodejs-mongodb/main/nodepop/resources/shoes_ballet.jpg', tags: ['Ballet', 'Girls', 'Nike'] },
-        { name: 'Shoes', owner: user1._id, price: 55, image: 'https://raw.githubusercontent.com/RamiroCovian/practica-backend-nodejs-mongodb/main/nodepop/resources/shoes_under.jpg', tags: ['Football', 'Boys', 'Under Armour'] },
+        { name: 'Soccer cleats', owner: user1._id, price: 55, image: 'https://raw.githubusercontent.com/RamiroCovian/practica-backend-nodejs-mongodb/main/nodepop/resources/shoes_under.jpg', tags: ['Football', 'Boys', 'Under Armour'] },
         { name: 'T-shirt', owner: user1._id, price: 2, image: 'https://raw.githubusercontent.com/RamiroCovian/practica-backend-nodejs-mongodb/main/nodepop/resources/barcelona.jpg', tags: ['Football', 'Boys', 'Girls', 'Barcelona F.C'] },
     ])
     console.log(`Created ${insertResult.length} products.`);
