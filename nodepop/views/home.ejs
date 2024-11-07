@@ -13,10 +13,11 @@
         <% products.forEach(product=> { %>
             <p>
                 <strong>Name:</strong> <%= product.name %><br>
+                <img src="<%= product.image %>" alt="<%= product.name %>"><br>
                 <strong>Price:</strong> u$s <%= product.price %><br>
-                <strong>Image:</strong> <%= product.image %><br>
                 <strong>Tags:</strong> 
                 <%= product.tags.join(', ') %>
+                <hr>
             </p>
             <% }) %>
     <% } %>
