@@ -35,6 +35,7 @@ app.all('/logout', loginController.logout)
 
 // Private pages
 app.get('/products/new', sessionManager.guard, productsController.index)
+app.post('/products/new', sessionManager.guard, productsController.postNew)
 
 // Error handler
 app.use((req, res, next) => {
