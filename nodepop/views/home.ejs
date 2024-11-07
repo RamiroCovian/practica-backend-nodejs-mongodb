@@ -1,7 +1,17 @@
 <%- include('header.ejs') %>
 <div class="container">
-    <h1>Welcome to <%= appName %></h1>    
-    <p>Para ver el contenido debe hacer <a href="/login">Login</a></p>
+    
+    <% // Contenido para usuarios NO logados %>
+    <% if (!session.userId) { %>
+        <h1>Welcome to <%= appName %></h1>    
+        <p>Para ver el contenido debe hacer <a href="/login">Login</a></p>
+    <% } %>
+
+    <% // Contenido para usuarios logados %>
+    <% if (session.userId) { %>
+        <h2>Estamos adentro</h2>
+    <% } %>
+
 
 
 </div>
