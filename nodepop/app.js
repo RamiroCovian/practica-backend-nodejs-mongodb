@@ -16,6 +16,7 @@ app.set('view engine', 'ejs')
 
 app.use(logger("dev"))
 
+// Public pages
 app.get('/', homeController.index)
 
 // Error handler
