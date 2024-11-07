@@ -2,6 +2,7 @@
 import readline from 'node:readline'
 import connectMongoose from './lib/connectMongoose.js'
 import User from './models/User.js'
+import Product from './models/Product.js'
 
 // Creo la coneccion con la Db
 const connection = await connectMongoose()
@@ -14,6 +15,8 @@ if (questionResponse.toLowerCase() !== 'yes') {
 }
 
 await initUsers()
+await initProducts()
+
 connection.close() // cierro coneccion
 
 async function initUsers() {
@@ -28,6 +31,29 @@ async function initUsers() {
     ])
     console.log(`Created ${insertResult.length} users.`);
 }
+
+async function initProducts() {
+    // Delete all products
+    const deleteResult = await Product.deleteMany()
+    console.log(`Deleted ${deleteResult.deletedCount} products.`);
+
+    const [admin, user1] = await Promise.all([
+        User.findOne({ email: 'admin@gmail.com' }),
+        User.findOne({ email: 'user1@gmail.com' })
+
+    ])
+
+    // Create initial products
+    const insertResult = await Product.insertMany([
+        { name: 'T-shirt', owner: admin._id, price: 5, image: 'path', tags: ['Summer', 'Girls'] },
+        { name: 'Short', owner: user1._id, price: 8, image: 'path', tags: ['Summer', 'Boys', 'Football'] },
+        { name: 'Shoes', owner: admin._id, price: 50, image: 'path', tags: ['Ballet', 'Girls', 'Nike'] },
+        { name: 'Shoes', owner: user1._id, price: 55, image: 'path', tags: ['Football', 'Boys', 'Under Armour'] },
+        { name: 'Cap', owner: user1._id, price: 2, image: 'path', tags: ['Football', 'Boys', 'Girls', 'Barcelona F.C'] },
+    ])
+    console.log(`Created ${insertResult.length} products.`);
+}
+
 
 // Funcion para interactuar con la consola
 function ask(questionText) {
