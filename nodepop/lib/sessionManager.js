@@ -7,7 +7,7 @@ const INACTIVITY_EXPIRATION_2_DAYS = 1000 * 60 * 60 * 24 * 2
 // Gestiono sessiones
 export const middleware = session({
     name: 'nodepop-session',
-    secret: 'sNxcSEtDBdqLWkAv79H5mX',
+    secret: 'aQ7c2PVAdEYxezjW3mK5hH',
     saveUninitialized: true,
     resave: false,
     cookie: { maxAge: INACTIVITY_EXPIRATION_2_DAYS },
