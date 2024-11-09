@@ -16,7 +16,8 @@
                 <img src="<%= product.image %>" alt="<%= product.name %>"><br>
                 <strong>Price:</strong> u$s <%= product.price %><br>
                 <strong>Tags:</strong> 
-                <%= product.tags.join(', ') %>
+                <%= product.tags.join(', ') %> <br>
+                <p>Delete Post from Sale <a href="/products/delete/<%= product.id %>"><i class="bi bi-trash"></i></a></p>
                 <hr>
             </p>
             <% }) %>
